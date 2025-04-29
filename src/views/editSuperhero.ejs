@@ -7,15 +7,15 @@
         action="http://localhost:3000/api/heroes/modificar-heroe?_method=PUT"
         method="post"
       >
-        <input type="hidden" name="id" value="<%= superheroeEditable._id %>" />
+        <input type="hidden" name="id" value="<%= paisEditable._id %>" />
 
-        <label for="nombreSuperHeroe">Nombre país</label>
+        <label for="nombrePais">Nombre país</label>
         <input
-          name="nombreSuperHeroe"
+          name="nombrePais"
           type="text"
           minlength="3"
           maxlength="60"
-          value="<%= superheroeEditable.nombreSuperHeroe %>"
+          value="<%= paisEditable.nombrePais %>"
           required
         />
         <br />
@@ -26,7 +26,7 @@
           minlength="3"
           maxlength="60"
           required
-          value="<%=  superheroeEditable.nombreReal %>"
+          value="<%=  paisEditable.nombreReal %>"
         />
         <br />
         <label for="edad">Edad</label>
@@ -35,7 +35,7 @@
           type="number"
           min="1"
           required
-          value="<%= superheroeEditable.edad %>"
+          value="<%= paisEditable.edad %>"
         />
         <br />
         <label for="planetaOrigen">Planeta de Orígen</label>
@@ -45,7 +45,7 @@
           minlength="3"
           maxlength="60"
           required
-          value="<%= superheroeEditable.planetaOrigen %>"
+          value="<%= paisEditable.planetaOrigen %>"
         />
         <br />
         <label for="debilidad">Debilidad</label>
@@ -54,7 +54,7 @@
           type="text"
           minlength="3"
           maxlength="60"
-          value="<%= superheroeEditable.debilidad %>"
+          value="<%= paisEditable.debilidad %>"
         />
         <br />
         <label for="poderes">Poderes</label>
@@ -64,7 +64,7 @@
           minlength="3"
           maxlength="180"
           placeholder="ej: volar, planear"
-          value="<%= superheroeEditable.poderes %>"
+          value="<%= paisEditable.poderes %>"
         />
         <br />
         <label for="aliados">Aliados</label>
@@ -74,7 +74,7 @@
           minlength="3"
           maxlength="180"
           placeholder="ej: Spiderman, Hulk, Wonder Woman"
-          value="<%= superheroeEditable.aliados %>"
+          value="<%= paisEditable.aliados %>"
         />
         <br />
         <label for="enemigos">Enemigos</label>
@@ -84,7 +84,7 @@
           minlength="3"
           maxlength="180"
           placeholder="ej: John Williams, Bob Richards"
-          value="<%= superheroeEditable.enemigos %>"
+          value="<%= paisEditable.enemigos %>"
         />
         <br />
         <label for="creador">Creador</label>
@@ -94,7 +94,7 @@
           required
           minlength="3"
           maxlength="60"
-          value="<%= superheroeEditable.creador %>"
+          value="<%= paisEditable.creador %>"
         />
 
         <input type="submit" value="Guardar Cambios" />

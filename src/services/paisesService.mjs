@@ -9,8 +9,8 @@ export const obtenerTodosLosPaises = async () => {
     return await paisesRepository.obtenerTodos();
 }
 
-export const crearPais = async ( nombreSuperHeroe, nombreReal, edad, planetaOrigen, debilidad, poderes, aliados, enemigos, creador ) => {
-    return await paisesRepository.crearHeroe( nombreSuperHeroe, nombreReal, edad, planetaOrigen, debilidad, poderes, aliados, enemigos, creador )
+export const crearPais = async ( nombrePais, nombreReal, edad, planetaOrigen, debilidad, poderes, aliados, enemigos, creador ) => {
+    return await paisesRepository.crearHeroe( nombrePais, nombreReal, edad, planetaOrigen, debilidad, poderes, aliados, enemigos, creador )
 }
 
 export const editarPais = async ( nombre, cambio ) => {

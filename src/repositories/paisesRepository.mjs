@@ -12,9 +12,9 @@ class paisesRepository extends IRepository {
         return await paises.find({});
     }
 
-    async crearPais( nombreSuperHeroe, nombreReal, edad, planetaOrigen, debilidad, poderes, aliados, enemigos, creador ) {
+    async crearPais( nombrePais, nombreReal, edad, planetaOrigen, debilidad, poderes, aliados, enemigos, creador ) {
         return await pais.insertOne( {
-            nombreSuperHeroe: nombreSuperHeroe,
+            nombrePais: nombrePais,
             nombreReal: nombreReal,
             edad: edad,
             planetaOrigen: planetaOrigen,
@@ -32,9 +32,9 @@ class paisesRepository extends IRepository {
 
     async borrarPais( nombre ) {
         return await pais.findOneAndDelete ({
-            nombreSuperHeroe : nombre
+            nombrePais : nombre
         })
     }
 }
 
-export default new SuperHeroeRepository();
+export default new PaisRepository();

@@ -14,7 +14,7 @@ export const deleteByNameValidationRules = () => [
 ];
 
 export const updateValidationRules = () => [
-    body('nombreSuperHeroe')
+    body('nombrePais')
         .optional()
         .trim()
         .isLength({ min: 3, max: 60 }).withMessage('Ingrese un nombre de país válido con una longitud entre 3 y 60 caracteres.'),
@@ -90,7 +90,7 @@ export const updateValidationRules = () => [
 
 export const registerValidationRules = () => [
     // nombrePais debe validarse que sea requerido, no tenga espacios en blanco(trim), una longitud minima de 3 caracteres y una longitud maxima de 60
-    body('nombreSuperHeroe')
+    body('nombrePais')
         .trim() // nota: trim valida que sean strings
         .notEmpty().withMessage("Campo 'nombrePais' obligatorio.")
         .isLength({ min : 3, max : 60}).withMessage('Ingrese un nombre de país válido con una longitud entre 3 y 60 caracteres.'),

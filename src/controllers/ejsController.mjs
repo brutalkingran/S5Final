@@ -8,7 +8,7 @@ export const mostrarIndexController = async ( req, res ) => {
             navbarLinks: [
                 { text: 'Inicio', href: '/', icon: '/icons/home.svg' },
                 { text: 'Dashboard', href: '/dashboard', icon: '/icons/info.svg' },
-                { text: 'Añadir país', href: '/addSuperhero', icon: '/icons/contact.svg' }
+                { text: 'Añadir país', href: '/addPais', icon: '/icons/contact.svg' }
             ]
         });
     } catch (error) {
@@ -31,7 +31,7 @@ export const mostrarDashboardController = async  (req, res) => {
             navbarLinks: [
                 { text: 'Inicio', href: '/', icon: '/icons/home.svg' },
                 { text: 'Dashboard', href: '/dashboard', icon: '/icons/info.svg' },
-                { text: 'Añadir país', href: '/addSuperhero', icon: '/icons/contact.svg' }
+                { text: 'Añadir país', href: '/addPais', icon: '/icons/contact.svg' }
             ]
         });       
     } catch (error) {
@@ -42,14 +42,14 @@ export const mostrarDashboardController = async  (req, res) => {
     }
 }
 
-export const crearSuperHeroeFormularioController = async ( req, res ) => {
+export const crearPaisFormularioController = async ( req, res ) => {
     try {
-        res.render('addSuperhero', {
+        res.render('addPais', {
             title: 'Añadir país',
             navbarLinks: [
                 { text: 'Inicio', href: '/', icon: '/icons/home.svg' },
                 { text: 'Dashboard', href: '/dashboard', icon: '/icons/info.svg' },
-                { text: 'Añadir país', href: '/addSuperhero', icon: '/icons/contact.svg' }
+                { text: 'Añadir país', href: '/addPais', icon: '/icons/contact.svg' }
             ]
         });
     } catch (error) {
@@ -63,15 +63,15 @@ export const crearSuperHeroeFormularioController = async ( req, res ) => {
 export const modificarPaisFormularioController = async ( req, res ) => {
     try {
         const { id } = req.params;
-        const superheroeEditable = await obtenerPaisPorId( id );
+        const paisEditable = await obtenerPaisPorId( id );
         
-        res.render('editSuperhero', {
-            superheroeEditable,
+        res.render('editPais', {
+            paisEditable,
             title: 'Editar país',
             navbarLinks: [
                 { text: 'Inicio', href: '/', icon: '/icons/home.svg' },
                 { text: 'Dashboard', href: '/dashboard', icon: '/icons/info.svg' },
-                { text: 'Añadir país', href: '/addSuperhero', icon: '/icons/contact.svg' }
+                { text: 'Añadir país', href: '/addPais', icon: '/icons/contact.svg' }
             ]
         });
     } catch (error) {
@@ -90,7 +90,7 @@ export const mostrarErroresController = async ( req, res ) => {
             navbarLinks: [
                 { text: 'Inicio', href: '/', icon: '/icons/home.svg' },
                 { text: 'Dashboard', href: '/dashboard', icon: '/icons/info.svg' },
-                { text: 'Añadir país', href: '/addSuperhero', icon: '/icons/contact.svg' }
+                { text: 'Añadir país', href: '/addPais', icon: '/icons/contact.svg' }
             ]
         });    
     } catch (error) {

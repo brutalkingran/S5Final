@@ -18,7 +18,7 @@
     <tbody>
       <% paises.forEach((heroe)=> { %>
       <tr>
-        <td><%= heroe.nombreSuperHeroe %></td>
+        <td><%= heroe.nombrePais %></td>
         <td><%= heroe.nombreReal %></td>
         <td><%= heroe.edad %></td>
         <td><%= heroe.debilidad || "N/A" %></td>
@@ -35,7 +35,7 @@
           </button>
           <button
             class="delete-button"
-            name-hero="<%= heroe.nombreSuperHeroe %>"
+            name-hero="<%= heroe.nombrePais %>"
             data-id="<%= heroe._id %>"
           >
             Eliminar
