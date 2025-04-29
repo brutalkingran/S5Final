@@ -1,0 +1,55 @@
+:root {
+    --nav-bg-color: #003DA5; /* Azul Gundam */
+    --nav-text-color: #FFFFFF; /* Blanco */
+    --nav-hover-color: #FF0000; /* Rojo */
+    --nav-accent-color: #FFD700; /* Amarillo */
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #F0F0F0; /* Fondo claro */
+}
+
+.accesos {
+    background-color: var(--nav-bg-color);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-around; /* Espaciado entre los elementos */
+    align-items: center;
+    list-style-type: none; /* Eliminar viñetas de la lista */
+}
+
+.accesos li {
+    margin: 0 10px; /* Espaciado entre los elementos de la lista */
+}
+
+.accesos a {
+    color: var(--nav-text-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: flex; /* Para alinear el icono y el texto */
+    align-items: center; /* Centrar verticalmente */
+    transition: color 0.3s;
+}
+
+.accesos a img {
+    width: 24px; /* Ajusta el tamaño del icono */
+    height: 24px; /* Ajusta el tamaño del icono */
+    margin-right: 8px; /* Espaciado entre el icono y el texto */
+}
+
+.accesos a:hover {
+    color: var(--nav-hover-color);
+}
+
+@media screen and (max-width: 767px) {
+    .accesos {
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+        align-items: flex-start; /* Alinear a la izquierda */
+    }
+
+    .accesos li {
+        margin: 10px 0; /* Espaciado vertical en pantallas pequeñas */
+    }
+}

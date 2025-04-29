@@ -1,0 +1,85 @@
+<section>
+  <h1>Todos los Superhéroes</h1>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nombre de país</th>
+        <th>Nombre Real</th>
+        <th>Edad</th>
+        <th>Debilidad</th>
+        <th>Creador</th>
+        <th>Poderes</th>
+        <th>Aliados</th>
+        <th>Enemigos</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% superheroes.forEach((heroe)=> { %>
+      <tr>
+        <td><%= heroe.nombreSuperHeroe %></td>
+        <td><%= heroe.nombreReal %></td>
+        <td><%= heroe.edad %></td>
+        <td><%= heroe.debilidad || "N/A" %></td>
+        <td><%= heroe.creador %></td>
+        <td><%= heroe.poderes.join(", ") %></td>
+        <td><%= heroe.aliados.join(" , ") %></td>
+        <td><%= heroe.enemigos.join(" , ") %></td>
+        <td>
+          <button
+            onclick="
+                            window.location.href='/modifyHero/<%= heroe._id %>'"
+          >
+            Modificar
+          </button>
+          <button
+            class="delete-button"
+            name-hero="<%= heroe.nombreSuperHeroe %>"
+            data-id="<%= heroe._id %>"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <a href="http://localhost:3000/api/formulario/crear-heroe-formulario"
+    >Crear Héroe</a
+  >
+</section>
+
+<script>
+  document.querySelectorAll(".delete-button").forEach((button) => {
+    // cambiamos de id a class
+    button.addEventListener("click", async function () {
+      const heroeID = this.getAttribute("data-id"); // this selecciona uno por uno
+      const nameHero = this.getAttribute("name-hero");
+      const decision = confirm(
+        `¿Estás seguro de que deseas eliminar a ${nameHero}?`
+      );
+
+      if (decision) {
+        try {
+          const response = await fetch(`/api/heroes/borrar-id/${heroeID}`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Error en la eliminación");
+          }
+
+          // Recargar la página después de eliminar
+          location.reload();
+        } catch (error) {
+          console.error("Error al eliminar el país:", error);
+        }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,7 @@
+<section>
+    <ul>
+        <% errors.forEach((error)=> { %>
+            <li><strong><%= error.path %></strong>: <%= error.msg %></li>
+        <% }); %>
+    </ul>
+</section>

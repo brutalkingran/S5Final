@@ -1,0 +1,104 @@
+<section>
+  <h1>Edita un país</h1>
+
+  <ul>
+    <li>
+      <form
+        action="http://localhost:3000/api/heroes/modificar-heroe?_method=PUT"
+        method="post"
+      >
+        <input type="hidden" name="id" value="<%= superheroeEditable._id %>" />
+
+        <label for="nombreSuperHeroe">Nombre país</label>
+        <input
+          name="nombreSuperHeroe"
+          type="text"
+          minlength="3"
+          maxlength="60"
+          value="<%= superheroeEditable.nombreSuperHeroe %>"
+          required
+        />
+        <br />
+        <label for="nombreReal">Nombre Real</label>
+        <input
+          name="nombreReal"
+          type="text"
+          minlength="3"
+          maxlength="60"
+          required
+          value="<%=  superheroeEditable.nombreReal %>"
+        />
+        <br />
+        <label for="edad">Edad</label>
+        <input
+          name="edad"
+          type="number"
+          min="1"
+          required
+          value="<%= superheroeEditable.edad %>"
+        />
+        <br />
+        <label for="planetaOrigen">Planeta de Orígen</label>
+        <input
+          name="planetaOrigen"
+          type="text"
+          minlength="3"
+          maxlength="60"
+          required
+          value="<%= superheroeEditable.planetaOrigen %>"
+        />
+        <br />
+        <label for="debilidad">Debilidad</label>
+        <input
+          name="debilidad"
+          type="text"
+          minlength="3"
+          maxlength="60"
+          value="<%= superheroeEditable.debilidad %>"
+        />
+        <br />
+        <label for="poderes">Poderes</label>
+        <input
+          name="poderes"
+          type="text"
+          minlength="3"
+          maxlength="180"
+          placeholder="ej: volar, planear"
+          value="<%= superheroeEditable.poderes %>"
+        />
+        <br />
+        <label for="aliados">Aliados</label>
+        <input
+          name="aliados"
+          type="text"
+          minlength="3"
+          maxlength="180"
+          placeholder="ej: Spiderman, Hulk, Wonder Woman"
+          value="<%= superheroeEditable.aliados %>"
+        />
+        <br />
+        <label for="enemigos">Enemigos</label>
+        <input
+          name="enemigos"
+          type="text"
+          minlength="3"
+          maxlength="180"
+          placeholder="ej: John Williams, Bob Richards"
+          value="<%= superheroeEditable.enemigos %>"
+        />
+        <br />
+        <label for="creador">Creador</label>
+        <input
+          name="creador"
+          type="text"
+          required
+          minlength="3"
+          maxlength="60"
+          value="<%= superheroeEditable.creador %>"
+        />
+
+        <input type="submit" value="Guardar Cambios" />
+      </form>
+    </li>
+  </ul>
+</section>
