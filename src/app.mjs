@@ -1,6 +1,6 @@
 import express from 'express';
 import { connectDB } from './config/dbConfig.mjs';
-import superheroeRoutes from './routes/superheroesRoutes.mjs';
+import paisRoutes from './routes/paisesRoutes.mjs';
 import ejsRoutes from './routes/ejsRoutes.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // archivos estáticos
 connectDB();
 
 // Configuración de rutas
-app.use('/api', superheroeRoutes);
+app.use('/api', paisRoutes);
 app.use('/', ejsRoutes);
 
 // manejo de errores para rutas no encontradas

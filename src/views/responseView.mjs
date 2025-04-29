@@ -1,8 +1,8 @@
 // capa de presentación
-// funciones para mostrar datos de superhéroes
+// funciones para mostrar datos de países
 // 6)
 
-export const renderizarSuperheroe = ( pais ) => {
+export const renderizarPais = ( pais ) => {
     return {
         Nombre: pais.nombreSuperHeroe,
         "Nombre Real": pais.nombreReal,
@@ -15,8 +15,8 @@ export const renderizarSuperheroe = ( pais ) => {
     }
 }
 
-export const renderizarListaSuperheroes = (superheroes) => {
-    return superheroes.map(pais => renderizarSuperheroe(pais));
+export const renderizarListaPaises = (paises) => {
+    return paises.map(pais => renderizarPais(pais));
 }
 
 export const formatearArray = ( textoArray = '' ) => {

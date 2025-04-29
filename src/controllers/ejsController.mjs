@@ -1,4 +1,4 @@
-import { obtenerSuperheroePorId, obtenerTodosLosSuperheroes } from "../services/paisesService.mjs";
+import { obtenerPaisPorId, obtenerTodosLosPaises } from "../services/paisesService.mjs";
 
 // Ruta principal
 export const mostrarIndexController = async ( req, res ) => {
@@ -21,11 +21,11 @@ export const mostrarIndexController = async ( req, res ) => {
 
 export const mostrarDashboardController = async  (req, res) => {
     try {
-        const superheroes = await obtenerTodosLosSuperheroes(); 
+        const paises = await obtenerTodosLosPaises(); 
         const cambio = req.query.cambio ? JSON.parse(decodeURIComponent(req.query.cambio)) : null; // por si hay cambio en la URL
 
         res.render('dashboard', {
-            superheroes,
+            paises,
             cambio,
             title: 'Dashboard',
             navbarLinks: [
@@ -60,25 +60,10 @@ export const crearSuperHeroeFormularioController = async ( req, res ) => {
     }
 }
 
-// export const obtenerTodosLosSuperheroesController = async ( req, res ) => {
-//     try {
-//         const superheroes = await obtenerTodosLosSuperheroes();
-        
-//         const cambio = req.query.cambio ? JSON.parse(decodeURIComponent(req.query.cambio)) : null; // por si hay cambio en la URL
-
-//         res.render('dashboard', { superheroes, cambio });
-//     } catch (error) {
-//         res.status(500).send({
-//             mensaje: `Error al obtener los superhéroes`,
-//             error: error.mensaje
-//         });
-//     }
-// }
-
-export const modificarSuperheroeFormularioController = async ( req, res ) => {
+export const modificarPaisFormularioController = async ( req, res ) => {
     try {
         const { id } = req.params;
-        const superheroeEditable = await obtenerSuperheroePorId( id );
+        const superheroeEditable = await obtenerPaisPorId( id );
         
         res.render('editSuperhero', {
             superheroeEditable,

@@ -1,5 +1,5 @@
 // Modelos de datos
-// Modelo Superheroe
+// Modelo pais
 // 2)
 
 import mongoose from "mongoose";

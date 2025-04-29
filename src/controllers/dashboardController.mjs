@@ -1,4 +1,4 @@
-import { borrarSuperheroeIDController, modificarSuperheroeFormularioController } from "./superheroesController.mjs";
+import { borrarPaisIDController, modificarPaisFormularioController } from "./paisesController.mjs";
 
 console.log("Conexión exitosa");
 
@@ -9,7 +9,7 @@ const heroeID = editButton.getAttribute('data-id');
 
 editButton.addEventListener('click', async () => {
     try {
-        await modificarSuperheroeFormularioController( heroeID )
+        await modificarPaisFormularioController( heroeID )
     } catch (error) {
         console.error(error);
     }
@@ -19,7 +19,7 @@ deleteButton.addEventListener('click', async () => {
     const decision = confirm(`¿Estás seguro que deseas eliminar este país?`);
     if (decision) {
         try {
-            await borrarSuperheroeIDController( heroeID )
+            await borrarPaisIDController( heroeID )
         } catch (error) {
             console.error(error);
         }

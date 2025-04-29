@@ -1,5 +1,5 @@
 // Lógica de negocio. Llama a los repositorios para obtener datos y aplicar lógica adicional.
-// Servicios de Superheroe
+// Servicios de pais
 // 4)
 
 import paisesRepository from "../repositories/paisesRepository.mjs";
@@ -14,7 +14,7 @@ export const crearPais = async ( nombreSuperHeroe, nombreReal, edad, planetaOrig
 }
 
 export const editarPais = async ( nombre, cambio ) => {
-    return await paisesRepository.actualizarHeroe( nombre, cambio );
+    return await paisesRepository.editarHeroe( nombre, cambio );
 }
 
 export const borrarPais = async ( id ) => {

@@ -13,7 +13,7 @@ class paisesRepository extends IRepository {
     }
 
     async crearPais( nombreSuperHeroe, nombreReal, edad, planetaOrigen, debilidad, poderes, aliados, enemigos, creador ) {
-        return await superHeroe.insertOne( {
+        return await pais.insertOne( {
             nombreSuperHeroe: nombreSuperHeroe,
             nombreReal: nombreReal,
             edad: edad,
@@ -27,11 +27,11 @@ class paisesRepository extends IRepository {
     };
 
     async editarPais( id, datosActualizados ) {
-        return await superHeroe.findByIdAndUpdate( id, datosActualizados, { new: true }); // devuelve documento actualizado
+        return await pais.findByIdAndUpdate( id, datosActualizados, { new: true }); // devuelve documento actualizado
     }
 
     async borrarPais( nombre ) {
-        return await superHeroe.findOneAndDelete ({
+        return await pais.findOneAndDelete ({
             nombreSuperHeroe : nombre
         })
     }
