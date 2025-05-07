@@ -1,12 +1,8 @@
 import mongoose from "mongoose";
-import fetch from "node-fetch";
+import Pais from "./src/models/Paises.mjs";
 
 const endpoint = `https://restcountries.com/v3.1/all`;
 const connect_data = `mongodb+srv://Grupo-03:grupo03@cursadanodejs.ls9ii.mongodb.net/Node-js`;
-
-// Esquema Mongoose básico (solo con validaciones mínimas)
-const paisSchema = new mongoose.Schema({}, { strict: false }); // acepta cualquier campo
-const Pais = mongoose.model("Pais", paisSchema, "paises"); // colección: 'paises'
 
 const cargarPaises = async () => {
     try {
@@ -41,7 +37,13 @@ const cargarPaises = async () => {
         })
 
         // Cargar a base de datos
-        const resultado = await Pais.insertMany(data_final);
+        // const resultado = await Pais.insertMany(data_final, { ordered: false});
+
+        for (const pais of data_final) {
+            const nuevoPais = new Pais(pais);
+            await nuevoPais.save();
+        }
+
         console.log(`${resultado.length} países insertados`);
     } catch (error) {
         console.error("Error al procesar los países:", error);
