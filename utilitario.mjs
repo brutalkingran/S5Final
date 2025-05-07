@@ -37,12 +37,7 @@ const cargarPaises = async () => {
         })
 
         // Cargar a base de datos
-        // const resultado = await Pais.insertMany(data_final, { ordered: false});
-
-        for (const pais of data_final) {
-            const nuevoPais = new Pais(pais);
-            await nuevoPais.save();
-        }
+        const resultado = await Pais.insertMany(data_final, { ordered: false});
 
         console.log(`${resultado.length} países insertados`);
     } catch (error) {

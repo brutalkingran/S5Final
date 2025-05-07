@@ -16,5 +16,5 @@ const paisSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now }
 });
 
-const Pais = mongoose.model('Pais', paisSchema, 'paises');
+const Pais = mongoose.model('Grupo-03', paisSchema, 'Grupo-03');
 export default Pais;
