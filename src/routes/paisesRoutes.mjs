@@ -3,8 +3,8 @@
 // 7)
 
 import express from 'express';
-import { mostrarPaisesController, crearPaisController, editarPaisController, borrarPaisController } from '../controllers/paisesController.mjs';
-import { deleteByIdValidationRules, deleteByNameValidationRules, registerValidationRules, updateValidationRules } from '../validations/validationRules.mjs';
+import { mostrarTodosLosPaisesController, crearPaisController, editarPaisController, borrarPaisController } from '../controllers/paisesController.mjs';
+import { deleteByIdValidationRules, deleteByIdValidationRules, registerValidationRules, updateValidationRules } from '../validations/validationRules.mjs';
 import { handleValidationErrors } from '../validations/errorMiddleware.mjs';
 
 const router = express.Router();
@@ -16,7 +16,7 @@ router.put('/pais/modificar-pais', updateValidationRules(), handleValidationErro
 // eliminar
 router.delete('/pais/borrar/:id', deleteByIdValidationRules(), handleValidationErrors, borrarPaisController);
 // mostrar
-router.get('/pais', registerValidationRules(), handleValidationErrors, mostrarPaisesController);
+router.get('/pais/todos', registerValidationRules(), handleValidationErrors, mostrarTodosLosPaisesController);
 
 export default router;
 

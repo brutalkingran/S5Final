@@ -1,4 +1,4 @@
-import { obtenerPaisPorId, obtenerTodosLosPaises } from "../services/paisesService.mjs";
+import { mostrarTodosLosPaises } from "../services/paisesService.mjs";
 
 // Ruta principal
 export const mostrarIndexController = async ( req, res ) => {
@@ -21,7 +21,7 @@ export const mostrarIndexController = async ( req, res ) => {
 
 export const mostrarDashboardController = async  (req, res) => {
     try {
-        const paises = await obtenerTodosLosPaises(); 
+        const paises = await mostrarTodosLosPaises(); 
         const cambio = req.query.cambio ? JSON.parse(decodeURIComponent(req.query.cambio)) : null; // por si hay cambio en la URL
 
         res.render('dashboard', {
