@@ -7,33 +7,26 @@
 import paises from "../models/Paises.mjs";
 import IRepository from "./IRepository.mjs";
 
-class paisesRepository extends IRepository {
+class PaisRepository extends IRepository {
     async obtenerTodos() {
         return await paises.find({});
     }
 
-    async crearPais( nombrePais, nombreReal, edad, planetaOrigen, debilidad, poderes, aliados, enemigos, creador ) {
-        return await pais.insertOne( {
-            nombrePais: nombrePais,
-            nombreReal: nombreReal,
-            edad: edad,
-            planetaOrigen: planetaOrigen,
-            debilidad: debilidad,
-            poderes: poderes,
-            aliados: aliados,
-            enemigos: enemigos,
-            creador: creador
-        });
+    async crearPais( nombreOficial, capital, borders, area, population, gini, timezones, creador ) {
+        return await pais.insertOne({ name: { official: nombreOficial }, capital, borders, area, population, gini, timezones, creador });
     };
 
     async editarPais( id, datosActualizados ) {
+        if (datosActualizados.nombreOficial) {
+            datosActualizados["name"] = { official: datosActualizados.nombreOficial };
+            delete datosActualizados.nombreOficial;
+        }
+
         return await pais.findByIdAndUpdate( id, datosActualizados, { new: true }); // devuelve documento actualizado
     }
 
-    async borrarPais( nombre ) {
-        return await pais.findOneAndDelete ({
-            nombrePais : nombre
-        })
+    async borrarPais(id) {
+        return await Pais.findByIdAndDelete(id);
     }
 }
 

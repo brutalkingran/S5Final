@@ -3,7 +3,7 @@
 // 7)
 
 import express from 'express';
-import { crearPaisController, editarPaisController, borrarPaisController } from '../controllers/paisesController.mjs';
+import { mostrarPaisesController, crearPaisController, editarPaisController, borrarPaisController } from '../controllers/paisesController.mjs';
 import { deleteByIdValidationRules, deleteByNameValidationRules, registerValidationRules, updateValidationRules } from '../validations/validationRules.mjs';
 import { handleValidationErrors } from '../validations/errorMiddleware.mjs';
 
@@ -14,6 +14,20 @@ router.post('/pais/crear-pais', registerValidationRules(), handleValidationError
 // editar
 router.put('/pais/modificar-pais', updateValidationRules(), handleValidationErrors, editarPaisController);
 // eliminar
-router.delete('/pais/borrar/:id', deleteByIdValidationRules(), handleValidationErrors, borrarPaisIDController);
+router.delete('/pais/borrar/:id', deleteByIdValidationRules(), handleValidationErrors, borrarPaisController);
+// mostrar
+router.get('/pais', registerValidationRules(), handleValidationErrors, mostrarPaisesController);
 
 export default router;
+
+// modelo:
+// {
+//     "name": { "official": "Argentina" },
+//     "capital": ["Buenos Aires"],
+//     "borders": ["BRA", "CHL"],
+//     "area": 2780400,
+//     "population": 45000000,
+//     "gini": { "2019": 42.9 },
+//     "timezones": ["UTC-03:00"],
+//     "creador": "Tu nombre"
+// }

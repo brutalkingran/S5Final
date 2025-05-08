@@ -2,20 +2,20 @@
 // Servicios de pais
 // 4)
 
-import paisesRepository from "../repositories/paisesRepository.mjs";
+import PaisRepository from "../repositories/paisesRepository.mjs";
 
-export const obtenerTodosLosPaises = async () => {
-    return await paisesRepository.obtenerTodos();
+export const mostrarTodosLosPaises = async () => {
+    return await PaisRepository.obtenerTodos();
 }
 
-export const crearPais = async ( nombrePais, nombreReal, edad, planetaOrigen, debilidad, poderes, aliados, enemigos, creador ) => {
-    return await paisesRepository.crearPais( nombrePais, nombreReal, edad, planetaOrigen, debilidad, poderes, aliados, enemigos, creador )
-}
+export const crearPais = async (datosPais) => {
+    return await PaisRepository.crearPais(datosPais);
+};
 
-export const editarPais = async ( nombre, cambio ) => {
-    return await paisesRepository.editarPais( nombre, cambio );
+export const editarPais = async ( id, datosActualizados ) => {
+    return await PaisRepository.editarPais( id, datosActualizados );
 }
 
 export const borrarPais = async ( id ) => {
-    return await paisesRepository.borrarPais( id );
+    return await PaisRepository.borrarPais( id );
 }
