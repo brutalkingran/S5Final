@@ -3,21 +3,17 @@
 // 7)
 
 import express from 'express';
-import { obtenerPaisPorIdController, buscarPaisesPorAtributoController, obtenerPaisesMayoresDe30Controller, crearPaisController, editarPaisController, borrarPaisIDController, borrarPaisNombreController } from '../controllers/paisesController.mjs';
+import { crearPaisController, editarPaisController, borrarPaisController } from '../controllers/paisesController.mjs';
 import { deleteByIdValidationRules, deleteByNameValidationRules, registerValidationRules, updateValidationRules } from '../validations/validationRules.mjs';
 import { handleValidationErrors } from '../validations/errorMiddleware.mjs';
 
 const router = express.Router();
 
-router.get('/heroes/mayores-30', obtenerPaisesMayoresDe30Controller);
-router.post('/heroes/crear-heroe', registerValidationRules(), handleValidationErrors, crearPaisController);
-
-router.get('/heroes/:id', obtenerPaisPorIdController);
-router.get('/heroes/buscar/:atributo/:valor', buscarPaisesPorAtributoController);
-
-router.put('/heroes/modificar-heroe', updateValidationRules(), handleValidationErrors, editarPaisController);
-
-router.delete('/heroes/borrar-id/:id', deleteByIdValidationRules(), handleValidationErrors, borrarPaisIDController);
-router.delete('/heroes/borrar-nombre/:nombre', deleteByNameValidationRules(), handleValidationErrors, borrarPaisNombreController);
+// agregar
+router.post('/pais/crear-pais', registerValidationRules(), handleValidationErrors, crearPaisController);
+// editar
+router.put('/pais/modificar-pais', updateValidationRules(), handleValidationErrors, editarPaisController);
+// eliminar
+router.delete('/pais/borrar/:id', deleteByIdValidationRules(), handleValidationErrors, borrarPaisIDController);
 
 export default router;
