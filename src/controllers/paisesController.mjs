@@ -3,23 +3,24 @@
 // 5)
 
 import { mostrarTodosLosPaises, crearPais, editarPais, borrarPais } from "../services/paisesService.mjs";
-import { renderizarPais } from '../views/responseView.mjs';
+import { renderizarPais, renderizarListaPaises } from '../views/responseView.mjs';
 
 export const mostrarTodosLosPaisesController = async ( req, res ) => {
     try {
-        const pais = await mostrarTodosLosPaises(id);
+        const paises  = await mostrarTodosLosPaises();
 
-        if (!pais) {
-            return res.status(404).send({
-                mensaje: `No se encontraron países`
+        if (!paises || paises.length === 0) {
+            return res.status(404).json({
+                mensaje: "No se encontraron países en la base de datos."
             });
         }
 
-        const paisFormateado = renderizarPais(pais);
+        const paisFormateado = renderizarListaPaises(paises);
+    
         res.status(200).json(paisFormateado);
     } catch (error) {
         res.status(500).send({
-            mensaje: `Error al obtener el país`,
+            mensaje: `Error al obtener países`,
             error: error.mensaje
         });
     }

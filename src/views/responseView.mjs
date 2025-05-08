@@ -2,18 +2,19 @@
 // funciones para mostrar datos de países
 // 6)
 
-export const renderizarPais = ( pais ) => {
+export const renderizarPais = (pais) => {
     return {
-        Nombre: pais.nombrePais,
-        "Nombre Real": pais.nombreReal,
-        Edad: pais.edad,
-        "Planeta de Origen": pais.planetaOrigen,
-        Debilidad: pais.debilidad,
-        Poderes: pais.poderes,
-        Aliados: pais.aliados,
-        Enemigos: pais.enemigos
-    }
-}
+        nombreOficial: pais.name?.official,
+        capital: pais.capital,
+        fronteras: pais.borders,
+        area: pais.area,
+        poblacion: pais.population,
+        gini: pais.gini ? Object.fromEntries(pais.gini) : null,
+        zonasHorarias: pais.timezones,
+        creador: pais.creador,
+        creadoEn: pais.createdAt
+    };
+};
 
 export const renderizarListaPaises = (paises) => {
     return paises.map(pais => renderizarPais(pais));

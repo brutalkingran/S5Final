@@ -1,5 +1,5 @@
 import express from "express";
-import { crearPaisFormularioController, editarPaisFormularioController, mostrarDashboardController, mostrarIndexController } from '../controllers/ejsController.mjs';
+import { crearPaisFormularioController, modificarPaisFormularioController, mostrarDashboardController, mostrarIndexController } from '../controllers/ejsController.mjs';
 
 const router = express.Router();
 
@@ -7,6 +7,6 @@ const router = express.Router();
 router.get('/', mostrarIndexController);
 router.get('/dashboard', mostrarDashboardController); // obtenerTodosLosPaisesController
 router.get('/addPais', crearPaisFormularioController);
-router.get('/modifyPais/:id', editarPaisFormularioController);
+router.get('/modifyPais/:id', modificarPaisFormularioController);
 
 export default router;

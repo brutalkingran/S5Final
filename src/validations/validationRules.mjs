@@ -7,12 +7,6 @@ export const deleteByIdValidationRules = () => [
         .isMongoId().withMessage('El ID debe ser un identificador válido de MongoDB.')
 ];
 
-export const deleteByNameValidationRules = () => [
-    param('nombre')
-        .notEmpty().withMessage('El nombre es obligatorio.')
-        .isLength({ min: 3, max: 60 }).withMessage('El nombre debe tener entre 3 y 60 caracteres.')
-];
-
 export const updateValidationRules = () => [
     body('nombrePais')
         .optional()

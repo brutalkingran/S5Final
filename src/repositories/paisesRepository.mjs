@@ -4,25 +4,34 @@
 // actúa como un intermediario entre la base de datos y la lógica de la aplicación
 // 3)
 
-import paises from "../models/Paises.mjs";
+import Pais from "../models/Paises.mjs";
 import IRepository from "./IRepository.mjs";
 
 class PaisRepository extends IRepository {
     async obtenerTodos() {
-        return await paises.find({});
+        return await Pais.find({ creador: 'Patricio' });
     }
 
-    async crearPais( nombreOficial, capital, borders, area, population, gini, timezones, creador ) {
-        return await pais.insertOne({ name: { official: nombreOficial }, capital, borders, area, population, gini, timezones, creador });
-    };
+    async crearPais(nombreOficial, capital, borders, area, population, gini, timezones, creador) {
+        return await Pais.create({
+            name: { official: nombreOficial },
+            capital,
+            borders,
+            area,
+            population,
+            gini,
+            timezones,
+            creador
+        });
+    }
 
-    async editarPais( id, datosActualizados ) {
+    async editarPais(id, datosActualizados) {
         if (datosActualizados.nombreOficial) {
             datosActualizados["name"] = { official: datosActualizados.nombreOficial };
             delete datosActualizados.nombreOficial;
         }
 
-        return await pais.findByIdAndUpdate( id, datosActualizados, { new: true }); // devuelve documento actualizado
+        return await Pais.findByIdAndUpdate(id, datosActualizados, { new: true }); // Devuelve documento actualizado
     }
 
     async borrarPais(id) {
