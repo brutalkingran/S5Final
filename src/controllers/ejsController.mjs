@@ -1,7 +1,7 @@
-import { mostrarTodosLosPaises } from "../services/paisesService.mjs";
+import { mostrarTodosLosPaises, obtenerPaisPorId } from "../services/paisesService.mjs";
 
 // Ruta principal
-export const mostrarIndexController = async ( req, res ) => {
+export const mostrarIndexController = async (req, res) => {
     try {
         res.render('index', {
             title: 'Página Principal',
@@ -14,19 +14,18 @@ export const mostrarIndexController = async ( req, res ) => {
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al cargar index`,
-            error: error.mensaje
+            error: error.message
         });
     }
 }
 
-export const mostrarDashboardController = async  (req, res) => {
+// Dashboard
+export const mostrarDashboardController = async (req, res) => {
     try {
         const paises = await mostrarTodosLosPaises(); 
-        const cambio = req.query.cambio ? JSON.parse(decodeURIComponent(req.query.cambio)) : null; // por si hay cambio en la URL
 
         res.render('dashboard', {
             paises,
-            cambio,
             title: 'Dashboard',
             navbarLinks: [
                 { text: 'Inicio', href: '/', icon: '/icons/home.svg' },
@@ -37,12 +36,12 @@ export const mostrarDashboardController = async  (req, res) => {
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al cargar dashboard`,
-            error: error.mensaje
+            error: error.message
         });  
     }
 }
 
-export const crearPaisFormularioController = async ( req, res ) => {
+export const crearPaisFormularioController = async (req, res) => {
     try {
         res.render('addPais', {
             title: 'Añadir país',
@@ -55,18 +54,23 @@ export const crearPaisFormularioController = async ( req, res ) => {
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al acceder al formulario`,
-            error: error.mensaje
+            error: error.message
         });
     }
 }
-
-export const modificarPaisFormularioController = async ( req, res ) => {
+export const modificarPaisFormularioController = async (req, res) => {
     try {
         const { id } = req.params;
-        const paisEditable = await obtenerPaisPorId( id );
-        
+        const paisEditable = await obtenerPaisPorId(id);
+
+        // Convertir Map a objeto plano si existe
+        const giniPlano = paisEditable.gini ? Object.fromEntries(paisEditable.gini) : {};
+
         res.render('editPais', {
-            paisEditable,
+            paisEditable: {
+                ...paisEditable.toObject(), // Convierte el documento Mongoose a objeto plano
+                gini: giniPlano              // Reemplaza gini con el objeto plano
+            },
             title: 'Editar país',
             navbarLinks: [
                 { text: 'Inicio', href: '/', icon: '/icons/home.svg' },
@@ -77,12 +81,12 @@ export const modificarPaisFormularioController = async ( req, res ) => {
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al cargar formulario`,
-            error: error.mensaje
+            error: error.message
         });
     }
 }
 
-export const mostrarErroresController = async ( req, res ) => {
+export const mostrarErroresController = async (req, res) => {
     try {
         res.render('errorDisplay', {
             errors: req.validationErrors,
@@ -96,7 +100,7 @@ export const mostrarErroresController = async ( req, res ) => {
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al cargar errores`,
-            error: error.mensaje
+            error: error.message
         });
     }
 }

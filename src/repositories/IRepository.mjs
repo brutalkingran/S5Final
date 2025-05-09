@@ -21,6 +21,10 @@ class IRepository {
     borrarPais() {
         throw new Error("Método 'borrarPais()' no implementado")
     }
+
+    obtenerPais( id ) {
+        throw new Error("Método 'obtenerPais()' no implementado")
+    }
 }
 
 export default IRepository;

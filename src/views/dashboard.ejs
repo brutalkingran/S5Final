@@ -4,66 +4,77 @@
   <table border="1">
     <thead>
       <tr>
-        <th>Nombre de país</th>
-        <th>Nombre Real</th>
-        <th>Edad</th>
-        <th>Debilidad</th>
-        <th>Creador</th>
-        <th>Poderes</th>
-        <th>Aliados</th>
-        <th>Enemigos</th>
+        <th>Nombre Oficial</th>
+        <th>Capital</th>
+        <th>Fronteras</th>
+        <th>Área (km²)</th>
+        <th>Población</th>
+        <th>Índice Gini</th>
+        <th>Husos Horarios</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <% paises.forEach((heroe)=> { %>
-      <tr>
-        <td><%= heroe.nombrePais %></td>
-        <td><%= heroe.nombreReal %></td>
-        <td><%= heroe.edad %></td>
-        <td><%= heroe.debilidad || "N/A" %></td>
-        <td><%= heroe.creador %></td>
-        <td><%= heroe.poderes.join(", ") %></td>
-        <td><%= heroe.aliados.join(" , ") %></td>
-        <td><%= heroe.enemigos.join(" , ") %></td>
+      <% paises.forEach((pais)=> { %>
+        <tr>
+          <td>
+            <%= pais.name.official %>
+          </td>
+          <td>
+            <%= pais.capital.join(", ") %></td>
+        <td><%= pais.borders?.join(" , ") || " Sin fronteras" %>
+          </td>
+          <td>
+            <%= pais.area?.toLocaleString() || "N/A" %>
+          </td>
+          <td>
+            <%= pais.population?.toLocaleString() || "N/A" %>
+          </td>
+          <td>
+            <% if (pais.gini && pais.gini.size> 0) { %>
+              <% for (let [year, value] of pais.gini.entries()) { %>
+                <div>
+                  <%= year %>: <%= value %>
+                </div>
+                <% } %>
+                  <% } else { %>
+                    N/A
+                    <% } %>
+          </td>
+          <td>
+            <%= pais.timezones.join(", ") %></td>
         <td>
           <button
-            onclick="
-                            window.location.href='/modifyHero/<%= heroe._id %>'"
+            onclick=" window.location.href='/modifyPais/<%= pais._id %>'"
           >
             Modificar
           </button>
           <button
-            class="delete-button"
-            name-hero="<%= heroe.nombrePais %>"
-            data-id="<%= heroe._id %>"
-          >
-            Eliminar
-          </button>
-        </td>
-      </tr>
-      <% }); %>
+            class=" delete-button" data-nombre="<%= pais.name.official %>" data-id="<%= pais._id %>">
+              Eliminar
+              </button>
+          </td>
+        </tr>
+        <% }); %>
     </tbody>
   </table>
 
-  <a href="http://localhost:3000/api/formulario/crear-heroe-formulario"
-    >Crear Héroe</a
-  >
+  <a href="/addPais">Crear País</a>
 </section>
 
 <script>
   document.querySelectorAll(".delete-button").forEach((button) => {
-    // cambiamos de id a class
     button.addEventListener("click", async function () {
-      const heroeID = this.getAttribute("data-id"); // this selecciona uno por uno
-      const nameHero = this.getAttribute("name-hero");
+      const paisID = this.getAttribute("data-id");
+      const nombre = this.getAttribute("data-nombre");
+
       const decision = confirm(
-        `¿Estás seguro de que deseas eliminar a ${nameHero}?`
+        `¿Estás seguro de que deseas eliminar el país "${nombre}"?`
       );
 
       if (decision) {
         try {
-          const response = await fetch(`/api/heroes/borrar-id/${heroeID}`, {
+          const response = await fetch(`/api/pais/borrar/${paisID}`, {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",
@@ -74,7 +85,6 @@
             throw new Error("Error en la eliminación");
           }
 
-          // Recargar la página después de eliminar
           location.reload();
         } catch (error) {
           console.error("Error al eliminar el país:", error);

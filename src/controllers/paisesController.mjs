@@ -2,7 +2,7 @@
 // gestiona solicitudes HTTP, llamando servicios correspondientes y utilizando las vistas para presentar los datos
 // 5)
 
-import { mostrarTodosLosPaises, crearPais, editarPais, borrarPais } from "../services/paisesService.mjs";
+import { mostrarTodosLosPaises, crearPais, editarPais, borrarPais, obtenerPaisPorId } from "../services/paisesService.mjs";
 import { renderizarPais, renderizarListaPaises } from '../views/responseView.mjs';
 
 export const mostrarTodosLosPaisesController = async ( req, res ) => {
@@ -29,11 +29,11 @@ export const mostrarTodosLosPaisesController = async ( req, res ) => {
 export const crearPaisController = async ( req, res ) => {
     try {
         const { nombreOficial, capital, borders, area, population, gini, timezones } = req.body;
-        const paisFormateado = await crearPais({ nombreOficial, capital, borders, area, population, gini, timezones });
+        await crearPais({ nombreOficial, capital, borders, area, population, gini, timezones });
+        
+        //res.status(201).json(paisFormateado);
 
-        res.status(201).json(paisFormateado);
-
-        // res.redirect(`/dashboard`, paisFormateado);
+        res.redirect(`/dashboard`);
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al crear país`,
@@ -48,8 +48,8 @@ export const editarPaisController = async ( req, res ) => {
 
         const paisModificado = await editarPais( datosActualizados.id, datosActualizados );
 
-        res.status(200).json(paisModificado);
-        // res.redirect(`/dashboard`);
+        // res.status(200).json(paisModificado);
+        res.redirect(`/dashboard`);
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al editar país`,
@@ -68,6 +68,21 @@ export const borrarPaisController = async ( req, res ) => {
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al eliminar país`,
+            error: error.mensaje
+        });
+    }
+}
+
+export const obtenerPaisPorIDController = async ( req, res ) => {
+    try {
+        const { id } = req.params;
+
+        const paisBorrado = await obtenerPaisPorId( id );
+
+        res.status(200).json(paisBorrado);
+    } catch (error) {
+        res.status(500).send({
+            mensaje: `Error al buscar país`,
             error: error.mensaje
         });
     }

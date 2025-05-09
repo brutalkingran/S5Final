@@ -19,3 +19,7 @@ export const editarPais = async ( id, datosActualizados ) => {
 export const borrarPais = async ( id ) => {
     return await PaisRepository.borrarPais( id );
 }
+
+export const obtenerPaisPorId = async ( id ) => {
+    return await PaisRepository.obtenerPais( id );
+}

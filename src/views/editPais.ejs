@@ -1,104 +1,31 @@
 <section>
   <h1>Edita un país</h1>
 
-  <ul>
-    <li>
-      <form
-        action="http://localhost:3000/api/heroes/modificar-heroe?_method=PUT"
-        method="post"
-      >
-        <input type="hidden" name="id" value="<%= paisEditable._id %>" />
+  <form action="/api/pais/modificar-pais?_method=PUT" method="post">
+    <input type="hidden" name="id" value="<%= paisEditable._id %>" />
 
-        <label for="nombrePais">Nombre país</label>
-        <input
-          name="nombrePais"
-          type="text"
-          minlength="3"
-          maxlength="60"
-          value="<%= paisEditable.nombrePais %>"
-          required
-        />
-        <br />
-        <label for="nombreReal">Nombre Real</label>
-        <input
-          name="nombreReal"
-          type="text"
-          minlength="3"
-          maxlength="60"
-          required
-          value="<%=  paisEditable.nombreReal %>"
-        />
-        <br />
-        <label for="edad">Edad</label>
-        <input
-          name="edad"
-          type="number"
-          min="1"
-          required
-          value="<%= paisEditable.edad %>"
-        />
-        <br />
-        <label for="planetaOrigen">Planeta de Orígen</label>
-        <input
-          name="planetaOrigen"
-          type="text"
-          minlength="3"
-          maxlength="60"
-          required
-          value="<%= paisEditable.planetaOrigen %>"
-        />
-        <br />
-        <label for="debilidad">Debilidad</label>
-        <input
-          name="debilidad"
-          type="text"
-          minlength="3"
-          maxlength="60"
-          value="<%= paisEditable.debilidad %>"
-        />
-        <br />
-        <label for="poderes">Poderes</label>
-        <input
-          name="poderes"
-          type="text"
-          minlength="3"
-          maxlength="180"
-          placeholder="ej: volar, planear"
-          value="<%= paisEditable.poderes %>"
-        />
-        <br />
-        <label for="aliados">Aliados</label>
-        <input
-          name="aliados"
-          type="text"
-          minlength="3"
-          maxlength="180"
-          placeholder="ej: Spiderman, Hulk, Wonder Woman"
-          value="<%= paisEditable.aliados %>"
-        />
-        <br />
-        <label for="enemigos">Enemigos</label>
-        <input
-          name="enemigos"
-          type="text"
-          minlength="3"
-          maxlength="180"
-          placeholder="ej: John Williams, Bob Richards"
-          value="<%= paisEditable.enemigos %>"
-        />
-        <br />
-        <label for="creador">Creador</label>
-        <input
-          name="creador"
-          type="text"
-          required
-          minlength="3"
-          maxlength="60"
-          value="<%= paisEditable.creador %>"
-        />
-
-        <input type="submit" value="Guardar Cambios" />
-      </form>
-    </li>
-  </ul>
+    <label for="name">Nombre Oficial</label>
+    <input name="name" type="text" minlength="3" maxlength="90" value="<%= paisEditable.name.official %>" required />
+    <br />
+    <label for="capital">Capital(es)</label>
+    <input name="capital" type="text" required value="<%= paisEditable.capital.join(', ') %>" />
+    <br />
+    <label for="borders">Fronteras</label>
+    <input name="borders" type="text" value="<%= paisEditable.borders?.join(', ') || '' %>" />
+    <br />
+    <label for="area">Área (km²)</label>
+    <input name="area" type="number" min="0" value="<%= paisEditable.area %>" />
+    <br />
+    <label for="population">Población</label>
+    <input name="population" type="number" min="0" value="<%= paisEditable.population %>" />
+    <br />
+    <label for="gini">Índice GINI (por año)</label>
+    <input name="gini" type="text" placeholder="ej: 2019:45.6,2020:46.2"
+      value="<%= Object.entries(paisEditable.gini || {}).map(([anio, valor]) => `${anio}:${valor}`).join(',') %>" />
+    <br />
+    <label for="timezones">Zonas Horarias</label>
+    <input name="timezones" type="text" required value="<%= paisEditable.timezones.join(', ') %>" />
+    <br />
+    <input type="submit" value="Guardar Cambios" />
+  </form>
 </section>

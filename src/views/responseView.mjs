@@ -30,3 +30,21 @@ export const formatearArray = ( textoArray = '' ) => {
             return elemento !== ""
         } );
 }
+
+export const parsearGini = ( value ) => {
+    if (typeof value !== 'string') return value;
+
+    const result = {};
+    const entries = value.split(',');
+
+    for (const entry of entries) {
+        const [año, valor] = entry.split(':');
+        const num = parseFloat(valor);
+
+        if (!año || isNaN(num)) continue;
+
+        result[año.trim()] = num;
+    }
+
+    return result;
+}

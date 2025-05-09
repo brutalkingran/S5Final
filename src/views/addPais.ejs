@@ -1,69 +1,27 @@
 <section>
   <h1>Agrega un país</h1>
-  <form action="/api/heroes/crear-heroe" method="post">
-    <label for="nombrePais">Nombre país</label>
-    <input
-      name="nombrePais"
-      type="text"
-      minlength="3"
-      maxlength="60"
-      required
-    />
+  <form action="/api/pais/crear-pais" method="post">
+    <label for="nombreOficial">Nombre Oficial</label>
+    <input name="nombreOficial" type="text" minlength="3" maxlength="90" required />
     <br />
-    <label for="nombreReal">Nombre Real</label>
-    <input
-      name="nombreReal"
-      type="text"
-      minlength="3"
-      maxlength="60"
-      required
-    />
+    <label for="capital">Capital(es)</label>
+    <input name="capital" type="text" required placeholder="Separadas por comas si son múltiples" />
     <br />
-    <label for="edad">Edad</label>
-    <input name="edad" type="number" min="1" required />
+    <label for="borders">Fronteras</label>
+    <input name="borders" type="text" placeholder="Separadas por comas" />
     <br />
-    <label for="planetaOrigen">Planeta de Orígen</label>
-    <input
-      name="planetaOrigen"
-      type="text"
-      minlength="3"
-      maxlength="60"
-      required
-    />
+    <label for="area">Área (km²)</label>
+    <input name="area" type="number" min="0" />
     <br />
-    <label for="debilidad">Debilidad</label>
-    <input name="debilidad" type="text" minlength="3" maxlength="60" />
+    <label for="population">Población</label>
+    <input name="population" type="number" min="0"/>
     <br />
-    <label for="poderes">Poderes</label>
-    <input
-      name="poderes"
-      type="text"
-      minlength="3"
-      maxlength="180"
-      placeholder="para añadir múltiples aliados, separar cada uno por comas. ej: volar, planear"
-    />
+    <label for="gini">Índice GINI (por año)</label>
+    <input name="gini" type="text" placeholder="ej: 2019:45.6,2020:46.2" />
     <br />
-    <label for="aliados">Aliados</label>
-    <input
-      name="aliados"
-      type="text"
-      minlength="3"
-      maxlength="180"
-      placeholder="para añadir múltiples aliados, separar cada uno por comas. ej: Spiderman, Hulk, Wonder Woman"
-    />
+    <label for="timezones">Zonas Horarias</label>
+    <input name="timezones" type="text" required placeholder="Separadas por comas" />
     <br />
-    <label for="enemigos">Enemigos</label>
-    <input
-      name="enemigos"
-      type="text"
-      minlength="3"
-      maxlength="180"
-      placeholder="para añadir múltiples enemigos, separar cada uno por comas. ej: John Williams, Bob Richards"
-    />
-    <br />
-    <label for="creador">Creador</label>
-    <input name="creador" type="text" required minlength="3" maxlength="60" />
-
     <button type="submit">Agregar país</button>
   </form>
 </section>
