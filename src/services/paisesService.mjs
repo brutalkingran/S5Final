@@ -10,7 +10,7 @@ export const mostrarTodosLosPaises = async () => {
 
 export const crearPais = async (datosPais) => {
     return await PaisRepository.crearPais(datosPais);
-};
+}
 
 export const editarPais = async ( id, datosActualizados ) => {
     return await PaisRepository.editarPais( id, datosActualizados );

@@ -12,7 +12,7 @@ class PaisRepository extends IRepository {
         return await Pais.find({ creador: 'Patricio' });
     }
 
-    async crearPais(nombreOficial, capital, borders, area, population, gini, timezones, creador) {
+    async crearPais({ nombreOficial, capital, borders, area, population, gini, timezones }) {
         return await Pais.create({
             name: { official: nombreOficial },
             capital,
@@ -20,8 +20,7 @@ class PaisRepository extends IRepository {
             area,
             population,
             gini,
-            timezones,
-            creador
+            timezones
         });
     }
 

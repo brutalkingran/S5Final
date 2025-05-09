@@ -12,7 +12,7 @@ const paisSchema = new mongoose.Schema({
     population: { type: Number, min: [0, 'La población debe ser un número entero positivo.'] },
     gini: { type: Map, of: { type: Number, min: 0, max: 100 } },
     timezones: { type: [String], required: true },
-    creador: { type: String, default: "Patricio Esparza" },
+    creador: { type: String, default: "Patricio" },
     createdAt: { type: Date, default: Date.now }
 });
 

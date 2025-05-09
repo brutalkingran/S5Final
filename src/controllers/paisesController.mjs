@@ -28,11 +28,12 @@ export const mostrarTodosLosPaisesController = async ( req, res ) => {
 
 export const crearPaisController = async ( req, res ) => {
     try {
-        const { name, capital, borders, area, population, gini, timezones, creador } = req.body;
+        const { nombreOficial, capital, borders, area, population, gini, timezones } = req.body;
+        const paisFormateado = await crearPais({ nombreOficial, capital, borders, area, population, gini, timezones });
 
-        const paisFormateado = await crearPais({ name, capital, borders, area, population, gini, timezones, creador });
+        res.status(201).json(paisFormateado);
 
-        res.redirect(`/dashboard`, paisFormateado);
+        // res.redirect(`/dashboard`, paisFormateado);
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al crear país`,
@@ -47,7 +48,8 @@ export const editarPaisController = async ( req, res ) => {
 
         const paisModificado = await editarPais( datosActualizados.id, datosActualizados );
 
-        res.redirect(`/dashboard`);
+        res.status(200).json(paisModificado);
+        // res.redirect(`/dashboard`);
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al editar país`,
