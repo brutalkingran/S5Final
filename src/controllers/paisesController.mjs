@@ -46,7 +46,7 @@ export const editarPaisController = async ( req, res ) => {
     try {
         const datosActualizados = req.body; // parámetros POST o PUT
 
-        const paisModificado = await editarPais( datosActualizados.id, datosActualizados );
+        await editarPais( datosActualizados.id, datosActualizados );
 
         // res.status(200).json(paisModificado);
         res.redirect(`/dashboard`);

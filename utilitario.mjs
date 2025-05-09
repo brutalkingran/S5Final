@@ -13,7 +13,7 @@ const cargarPaises = async () => {
         const respuesta = await fetch(endpoint);
         const data = await respuesta.json();
 
-        // filtrar países por idioma español
+        // filtrar países por idioma español y que contengan el campo 'language'
         const data_filtro = data.filter( ( pais ) => {
             return pais.languages && Object.keys(pais.languages).includes("spa");
         } );
@@ -28,7 +28,7 @@ const cargarPaises = async () => {
             const nuevoPais = { ...pais };
 
             // Elimina propiedades sin usar
-            propiedadesAEliminar.forEach(prop => delete nuevoPais[prop]);
+            propiedadesAEliminar.forEach( (prop) => delete nuevoPais[prop]);
 
             // Nuevo campo: nombre creador
             nuevoPais.creador = "Patricio";
@@ -37,7 +37,7 @@ const cargarPaises = async () => {
         })
 
         // Cargar a base de datos
-        const resultado = await Pais.insertMany(data_final, { ordered: false});
+        const resultado = await Pais.insertMany(data_final);
 
         console.log(`${resultado.length} países insertados`);
     } catch (error) {

@@ -3,6 +3,7 @@
 // 6)
 
 export const renderizarPais = (pais) => {
+    // convierte en json
     return {
         nombreOficial: pais.name?.official,
         capital: pais.capital,
@@ -21,6 +22,7 @@ export const renderizarListaPaises = (paises) => {
 }
 
 export const formatearArray = ( textoArray = '' ) => {
+    // separa cadena por comas
     return textoArray
         .split(",")
         .map(( elemento ) => {
@@ -31,7 +33,7 @@ export const formatearArray = ( textoArray = '' ) => {
         } );
 }
 
-export const parsearGini = ( value ) => {
+export const parsearGini = ( value ) => { // convierte dato gini en un objeto { año : valor }
     if (typeof value !== 'string') return value;
 
     const result = {};

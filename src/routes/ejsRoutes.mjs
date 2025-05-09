@@ -3,9 +3,9 @@ import { crearPaisFormularioController, modificarPaisFormularioController, mostr
 
 const router = express.Router();
 
-// ejs
+// rutas ejs
 router.get('/', mostrarIndexController);
-router.get('/dashboard', mostrarDashboardController); // obtenerTodosLosPaisesController
+router.get('/dashboard', mostrarDashboardController);
 router.get('/addPais', crearPaisFormularioController);
 router.get('/modifyPais/:id', modificarPaisFormularioController);
 

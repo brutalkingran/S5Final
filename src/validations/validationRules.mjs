@@ -45,8 +45,7 @@ export const updateValidationRules = () => [
 
     body('population')
         .optional()
-        // TODO: BUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-        .custom(value => {
+        .custom(value => { // Chequea si campo 'population' cuente con un número o undefined
             if (value === undefined || value === null || value === '' || value === 0) {
                 return true; // no validar si está vacío
             }

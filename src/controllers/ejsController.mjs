@@ -41,6 +41,7 @@ export const mostrarDashboardController = async (req, res) => {
     }
 }
 
+// Formulario crear país
 export const crearPaisFormularioController = async (req, res) => {
     try {
         res.render('addPais', {
@@ -58,6 +59,8 @@ export const crearPaisFormularioController = async (req, res) => {
         });
     }
 }
+
+// Formulario modificar país
 export const modificarPaisFormularioController = async (req, res) => {
     try {
         const { id } = req.params;
@@ -86,6 +89,7 @@ export const modificarPaisFormularioController = async (req, res) => {
     }
 }
 
+// Página errores
 export const mostrarErroresController = async (req, res) => {
     try {
         res.render('errorDisplay', {

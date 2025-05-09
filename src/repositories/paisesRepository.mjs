@@ -9,7 +9,7 @@ import IRepository from "./IRepository.mjs";
 
 class PaisRepository extends IRepository {
     async obtenerTodos() {
-        return await Pais.find({ creador: 'Patricio' });
+        return await Pais.find({ creador: 'Patricio' }); // filtra los que estén a mi nombre
     }
 
     async crearPais({ nombreOficial, capital, borders, area, population, gini, timezones }) {
@@ -25,11 +25,6 @@ class PaisRepository extends IRepository {
     }
 
     async editarPais(id, datosActualizados) {
-        if (datosActualizados.nombreOficial) {
-            datosActualizados["name"] = { official: datosActualizados.nombreOficial };
-            delete datosActualizados.nombreOficial;
-        }
-
         return await Pais.findByIdAndUpdate(id, datosActualizados, { new: true }); // Devuelve documento actualizado
     }
 

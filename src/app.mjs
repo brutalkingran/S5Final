@@ -12,9 +12,9 @@ import dotenv from 'dotenv';
 dotenv.config(); // Cargar las variables de entorno desde el archivo .env
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000; // process.env.PORT para Render, si no usa puerto 3000
 
-const __filename = fileURLToPath(import.meta.url); // Get the resolved path to the file
+const __filename = fileURLToPath(import.meta.url); // resolved path to the file
 const __dirname = path.dirname(__filename); // Get the name of the directory
 
 app.set('view engine', 'ejs');
