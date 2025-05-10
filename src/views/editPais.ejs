@@ -4,8 +4,8 @@
   <form action="/api/pais/modificar-pais?_method=PUT" method="post">
     <input type="hidden" name="id" value="<%= paisEditable._id %>" />
 
-    <label for="name">Nombre Oficial</label>
-    <input name="name" type="text" minlength="3" maxlength="90" value="<%= paisEditable.name.official %>" required />
+    <label for="nombreOficial">Nombre Oficial</label>
+    <input name="nombreOficial" type="text" minlength="3" maxlength="90" value="<%= paisEditable.name.official %>" required />
     <br />
     <label for="capital">Capital(es)</label>
     <input name="capital" type="text" required value="<%= paisEditable.capital.join(', ') %>" />
